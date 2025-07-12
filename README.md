@@ -1,5 +1,20 @@
 # Star-Wars-Vehicles-Sales-Angular
 
+## Concepts
+
+```bash
+signal()
+computed()
+linkedSignal()
+rxResource()
+```
+
+## Create a new component with extra helpers
+
+```bash
+ng g c vehicle-selection --inline-template --inline-style --skip-tests
+```
+
 ## Create a new Angular project
 
 Used a custom boilerplate/template:
@@ -31,6 +46,12 @@ For a complete list of available schematics (such as `components`, `directives`,
 
 ```bash
 ng generate --help
+```
+
+Shorthand and creating standalone components:
+
+```bash
+ng g c component-name
 ```
 
 ## Building
