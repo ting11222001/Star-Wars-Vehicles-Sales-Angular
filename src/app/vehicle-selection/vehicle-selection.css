@@ -1,0 +1,12 @@
+.content {
+  padding: 20px 10px;
+  border: 2px solid #6A5449;
+  border-radius: 4px;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #6A5449;
+  padding: 0 0 20px 0
+}

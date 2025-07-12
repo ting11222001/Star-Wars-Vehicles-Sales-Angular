@@ -29,8 +29,9 @@ import { Home } from './home/home';
 
       <router-outlet></router-outlet>
     </div>
-  `
+  `,
+  styleUrl: './app.component.css'
 })
 export class App {
-  protected pageTitle = 'Star-Wars-Vehicles-Sales-Angular';
+  protected pageTitle = 'Star Wars Vehicles Sales';
 }

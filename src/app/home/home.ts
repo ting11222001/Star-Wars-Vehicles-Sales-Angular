@@ -14,13 +14,14 @@ import { Component, signal } from '@angular/core';
       <div class="title">
         {{ pageTitle }}
       </div>
-      <div>
-          <img class="homeImage" src="speeder-bike.png" />
-      </div>
 
       @if (marketingMessage()) {
         <h2>{{ marketingMessage() }}</h2>
       }
+      
+      <div>
+          <img class="homeImage" src="speeder-bike.png" />
+      </div>
     </div>
   `,
   styleUrl: './home.css'
