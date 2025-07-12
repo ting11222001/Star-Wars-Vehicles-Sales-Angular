@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-vehicle-selection',
   imports: [ FormsModule ],
   standalone: true,
+  providers: [VehicleService],
   template: `
     <h1>Star Wars Vehicle Sales</h1>
     @if (isLoading()) {

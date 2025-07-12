@@ -35,17 +35,24 @@ import { delay, map } from 'rxjs';
  * To see how the loading works, add a console log in rxResource and loadingEff, vehiclesEff.
  * Browser console will print:
  * Before the http request!
+ * 
  * Loading indicator:  true
+ * Selection:  undefined
  * Vehicle data:  []
  * 
  * Loading indicator:  false
  * Vehicle data:  (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
  * 
+ * Then, when we select a value in the vehicle drop down list, it prints, say:
+ * Selection:  {name: 'T-16 skyhopper', model: 'T-16 skyhopper', manufacturer: 'Incom Corporation', cost_in_credits: '14500', length: '10.4 ', …}
+ * 
  * Since we don't want to expose vehicleResource to components, add a property called isLoading.
  */
-@Injectable({
-  providedIn: 'root'
-})
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+@Injectable()
 export class VehicleService {
   private vehicleUrl = 'https://swapi.py4e.com/api/vehicles';
 
@@ -81,6 +88,7 @@ export class VehicleService {
 
   // display the isLoading property whenever it changes
   loadingEff = effect(() => console.log('Loading indicator: ', this.vehicleResource.isLoading()));
+  selectedVehiclesEff = effect(() => console.log('Selection: ', this.selectedVehicle()));
   vehiclesEff = effect(() => console.log('Vehicle data: ', this.vehicles()));
 
   isLoading = this.vehicleResource.isLoading;

@@ -15,6 +15,35 @@ Add routes:
 RouterLink and RouterOutlet
 ```
 
+About providing a Service in root vs Component (e.g. vehicle.service.ts), if we register the vehicle serivce at the root level:
+```bash
+@Injectable({
+  providedIn: 'root'
+})
+export class VehicleService {
+  ...
+```
+Then, when we navigate away from vehicle selection screen, its selected value, etc. will **persist**, so when we go back to vehicle selection screen, the same value is displayed.
+
+If we register the vehicle service at the component level:
+```bash
+@Injectable()
+export class VehicleService {
+  ...
+```
+
+And at the VehicleSelection component's metadata, add:
+```bash
+@Component({
+  ...
+  providers: [VehicleService],
+  ...
+})
+export class VehicleSelection {
+  ...
+```
+Then, when we navigate away from vehicle selection screen, its selected value, etc. will **disappear**, so when we go back to vehicle selection screen, the original values are gone (the values will be reset to default e.g. selectedVehicle goes back to undefined).
+
 ## Inspiration
 
 [Signals in Action: Building an App](https://www.youtube.com/watch?v=LHgJP7MwTWY&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=1&pp=iAQB)
