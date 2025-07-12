@@ -29,6 +29,7 @@ import { map } from 'rxjs';
  * What if we want to reset the quantity field when user selects another vehicle:
  * Whenever we want to reset a writable Signal based on another signal, use a linkedSignal.
  * Whenever the "source" is changed, "computation" will be re-executed.
+ * Add an extra detail to computation: when there's value in selectedVehicle, reset quantity to 1 otherwise 0.
  */
 @Injectable({
   providedIn: 'root'
