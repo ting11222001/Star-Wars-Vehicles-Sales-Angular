@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { computed, inject, Injectable, linkedSignal, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, linkedSignal, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
+import { delay, map } from 'rxjs';
 
 /**
  * Notes:
@@ -25,11 +25,23 @@ import { map } from 'rxjs';
  * vehicleResource is of ResourceRef type (ResourceRef should have a value property as a signal).
  * Replace vehicles = signal<Vehicle[]>([]); with vehicles = computed(() => this.vehicleResource.value()); -> computed() makes vehicles reactive.
  * map (all lowercase) is the RxJS operator used for mapping observable streams.
+ * streams used to be loader but now it's changed to streams.
  * 
  * What if we want to reset the quantity field when user selects another vehicle:
  * Whenever we want to reset a writable Signal based on another signal, use a linkedSignal.
  * Whenever the "source" is changed, "computation" will be re-executed.
  * Add an extra detail to computation: when there's value in selectedVehicle, reset quantity to 1 otherwise 0.
+ * 
+ * To see how the loading works, add a console log in rxResource and loadingEff, vehiclesEff.
+ * Browser console will print:
+ * Before the http request!
+ * Loading indicator:  true
+ * Vehicle data:  []
+ * 
+ * Loading indicator:  false
+ * Vehicle data:  (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+ * 
+ * Since we don't want to expose vehicleResource to components, add a property called isLoading.
  */
 @Injectable({
   providedIn: 'root'
@@ -55,14 +67,23 @@ export class VehicleService {
   total = computed(() => (this.selectedVehicle()?.cost_in_credits ?? 0) * this.quantity());
   color = computed(() => this.total() > 50000 ? 'green' : 'red');
 
-  vehicleResource = rxResource({
-    stream: () => 
-      this.http.get<VehicleResponse>(this.vehicleUrl).pipe(
-        map(vehicleResponse => vehicleResponse.results)
-      ),
+  private vehicleResource = rxResource({
+    stream: () => {
+      console.log('Before the http request!');
+      return this.http.get<VehicleResponse>(this.vehicleUrl).pipe(
+        map(vehicleResponse => vehicleResponse.results),
+        delay(1000) // delay for 1 sec to see the loading indicator!
+      ) 
+    },
     defaultValue: [],
   });
   vehicles = computed(() => this.vehicleResource.value() ?? [] as Vehicle[]);
+
+  // display the isLoading property whenever it changes
+  loadingEff = effect(() => console.log('Loading indicator: ', this.vehicleResource.isLoading()));
+  vehiclesEff = effect(() => console.log('Vehicle data: ', this.vehicles()));
+
+  isLoading = this.vehicleResource.isLoading;
 }
 
 

@@ -6,8 +6,15 @@
 signal()
 computed()
 linkedSignal()
-rxResource()
+rxResource(): send HTTP requests and add a loading indicator
 ```
+
+## Inspiration
+
+[Signals in Action: Building an App](https://www.youtube.com/watch?v=LHgJP7MwTWY&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=1&pp=iAQB)
+
+[Signals in Action: Loading Indicator](https://www.youtube.com/watch?v=5K0Jr2ymQEs&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=2)
+
 
 ## Create a new component with extra helpers
 

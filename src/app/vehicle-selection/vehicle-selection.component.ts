@@ -7,16 +7,20 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   template: `
     <h1>Star Wars Vehicle Sales</h1>
-    <select class="select" [(ngModel)]="selectedVehicle">
-        <option value="undefined" disabled selected>--Select a vehicle--</option>
-        @for(vehicle of vehicles(); track vehicle) {
-        <option [ngValue]='vehicle'>{{ vehicle.name }}</option>
-        }
-    </select>
-    <div>Quantity: <input type='number' [(ngModel)]='quantity' ></div>
-    <div>Vehicle: {{ selectedVehicle()?.name }}</div>
-    <div>Price: {{ selectedVehicle()?.cost_in_credits }}</div>
-    <div [style.color]='color()'>Total: {{ total() }}</div>
+    @if (isLoading()) {
+      <p>...Loading Vehicles</p>
+    } @else {
+      <select class="select" [(ngModel)]="selectedVehicle">
+          <option value="undefined" disabled selected>--Select a vehicle--</option>
+          @for(vehicle of vehicles(); track vehicle) {
+          <option [ngValue]='vehicle'>{{ vehicle.name }}</option>
+          }
+      </select>
+      <div>Quantity: <input type='number' [(ngModel)]='quantity' ></div>
+      <div>Vehicle: {{ selectedVehicle()?.name }}</div>
+      <div>Price: {{ selectedVehicle()?.cost_in_credits }}</div>
+      <div [style.color]='color()'>Total: {{ total() }}</div>
+    }
   `,
   styles: ``
 })
@@ -29,4 +33,6 @@ export class VehicleSelection {
 
   total = this.vehicleService.total;
   color = this.vehicleService.color;
+
+  isLoading = this.vehicleService.isLoading;
 }
