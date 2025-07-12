@@ -1,17 +1,36 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { VehicleSelection } from './vehicle-selection/vehicle-selection';
 import { Home } from './home/home';
 
+/**
+ * Notes:
+ * router-outlet: defines where to display the routed template
+ */
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Home, VehicleSelection],
+  imports: [RouterOutlet, RouterLink],
   template: `
-    <app-home></app-home>
-    <app-vehicle-selection></app-vehicle-selection>
+    <div class="container">
+      <div class="navbar">
+          <div class="title">{{pageTitle}}</div>
+          <nav>
+            <ul class="nav-links">
+                <li>
+                  <a [routerLink]="['/home']">Home</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/vehicles']">Vehicle List</a>
+                </li>
+            </ul>  
+          </nav>
+      </div>   
+
+      <router-outlet></router-outlet>
+    </div>
   `
 })
 export class App {
-  protected title = 'Star-Wars-Vehicles-Sales-Angular';
+  protected pageTitle = 'Star-Wars-Vehicles-Sales-Angular';
 }
