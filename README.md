@@ -7,6 +7,8 @@ signal()
 computed()
 linkedSignal()
 rxResource(): send HTTP requests and add a loading indicator
+
+routes with RouterLink and RouterOutlet
 ```
 
 ## Inspiration

@@ -1,15 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
+/**
+ * Notes:
+ * img src path needs to look at angular.json: 
+ * projects > architect > build > options > assets > input
+ * "input": "public" means that save the pictures in the "public" folder in your project root.
+ */
 @Component({
   selector: 'app-home',
   imports: [],
   template: `
-    <p>
-      home works!
-    </p>
+    <div class="content">
+      <div class="title">
+        {{ pageTitle }}
+      </div>
+      <div>
+          <img class="homeImage" src="speeder-bike.png" />
+      </div>
+
+      @if (marketingMessage()) {
+        <h2>{{ marketingMessage() }}</h2>
+      }
+    </div>
   `,
-  styles: ``
+  styleUrl: './home.css'
 })
 export class Home {
+  pageTitle = 'Welcome to Star Wars Vehicle Sales';
+  marketingMessage = signal("Plenty of vehicles in stock!");
 
 }
