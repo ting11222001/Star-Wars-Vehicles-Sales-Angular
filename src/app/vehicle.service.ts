@@ -49,10 +49,10 @@ import { delay, map } from 'rxjs';
  * Since we don't want to expose vehicleResource to components, add a property called isLoading.
  */
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+// @Injectable()
 export class VehicleService {
   private vehicleUrl = 'https://swapi.py4e.com/api/vehicles';
 
