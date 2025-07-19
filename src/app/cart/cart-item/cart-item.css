@@ -1,0 +1,41 @@
+:host {
+  display: contents;
+  vertical-align: middle;
+}
+
+td {
+  color: #6A5449;
+  text-align: left;
+}
+
+td.left {
+  text-align: left;
+}
+
+td.right {
+  text-align: right;
+}
+
+td.center {
+  text-align: center;
+}
+
+button {
+  background-color: gold;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+select {
+  color: #6A5449;
+  font: inherit;
+  width: 60px;
+}
+
+select>option {
+  color: #6A5449;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}

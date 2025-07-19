@@ -1,0 +1,31 @@
+/* Needed to keep the total aligned with the cart items extended price */
+.outer-container {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(60px, 1fr));
+  min-width: 100%;
+}
+
+.container {
+  border: 2px solid #6A5449;
+  border-radius: 4px;
+  grid-column: 4 / 7;
+  margin-top: 5px;
+  padding: 10px;
+}
+
+.grid {
+  color: #6A5449;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(60px, 1fr));
+  grid-gap: 5px;
+  margin: 0 0 auto;
+  min-width: 100%;
+}
+
+.row {
+  display: contents;
+}
+
+.data-column {
+  text-align: right;
+}
