@@ -23,6 +23,12 @@ import { Home } from './home/home';
                 <li>
                   <a [routerLink]="['/vehicles']">Vehicle List</a>
                 </li>
+                <li>
+                  <a [routerLink]="['/films']">Film List</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/cart']">Cart</a>
+                </li>
             </ul>  
           </nav>
       </div>   

@@ -1,0 +1,45 @@
+.container {
+  padding: 10px;
+  border: 2px solid #6A5449;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+table {
+  align-items: baseline;
+  display: grid;
+  grid-template-columns: minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 3fr);
+  grid-gap: 10px;
+  min-width: 100%;
+  text-align: left;
+}
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+th {
+  color: #6A5449;
+  font-weight: bold;
+  position: sticky;
+}
+
+td {
+  color: #6A5449;
+  text-align: left;
+}
+
+select {
+  color: #6A5449;
+  font: inherit;
+  margin: 10px 0;
+  width: 280px;
+}
+
+select>option {
+  color: #6A5449;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
