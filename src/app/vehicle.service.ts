@@ -29,7 +29,7 @@ import { delay, map, tap } from 'rxjs';
  * 
  * To see how the loading works, add a console log in rxResource and loadingEff, vehiclesEff.
  * 
- * Browser console prints:
+ * Browser console:
  * Before the http request!
  * Loading indicator for vehicles: true
  * Vehicle data:  []
@@ -40,7 +40,7 @@ import { delay, map, tap } from 'rxjs';
  * Loading indicator for vehicles: false
  * Vehicle data:  (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
  * 
- * When we select a value in the vehicle drop down list, Selection looks like this:
+ * When we select a value in the vehicle drop down list, a Selection looks like this:
  * Selection:  {name: 'T-16 skyhopper', model: 'T-16 skyhopper', manufacturer: 'Incom Corporation', cost_in_credits: '14500', length: '10.4 ', …}
  */
 

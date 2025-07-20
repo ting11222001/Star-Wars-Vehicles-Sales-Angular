@@ -46,11 +46,27 @@ export class VehicleSelection {
 ```
 Then, when we navigate away from vehicle selection screen, its selected value, etc. will **disappear**, so when we go back to vehicle selection screen, the original values are gone (the values will be reset to default e.g. selectedVehicle goes back to undefined).
 
+rxResource (Angular 19):
+```bash
+request
+loader
+```
+
+rxJs operators:
+```bash
+map
+forkJoin
+of
+```
+
 ## Inspiration
 
 [Signals in Action: Building an App](https://www.youtube.com/watch?v=LHgJP7MwTWY&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=1&pp=iAQB)
 
 [Signals in Action: Loading Indicator](https://www.youtube.com/watch?v=5K0Jr2ymQEs&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=2)
+
+[SIA: Signals in a Service or a Component?](https://www.youtube.com/watch?v=xtxBMcEMcxU&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=7)
+- Skipped the error message handling part
 
 ## Documentation
 
