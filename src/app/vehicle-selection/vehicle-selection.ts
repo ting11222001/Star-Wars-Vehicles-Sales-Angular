@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   // providers: [VehicleService],
   template: `
     <h1>Star Wars Vehicle Sales</h1>
-    @if (isLoading()) {
+    @if (isVehicleLoading()) {
       <div>...Loading Vehicles</div>
     } @else {
       <div class="content">
@@ -48,5 +48,5 @@ export class VehicleSelection {
   total = this.vehicleService.total;
   color = this.vehicleService.color;
 
-  isLoading = this.vehicleService.isLoading;
+  isVehicleLoading = this.vehicleService.isVehicleLoading;
 }
