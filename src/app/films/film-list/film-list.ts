@@ -1,6 +1,6 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FilmService } from '../film.service';
-import { Vehicle, VehicleService } from '../../vehicle.service';
+import { VehicleService } from '../../vehicle.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,45 +16,45 @@ import { FormsModule } from '@angular/forms';
       @if(isVehicleLoading()) {
         <div>...Loading Vehicles</div>
       } @else {
-        <select class="select" [(ngModel)]="selectedVehicle">
+        <select class="select" [(ngModel)]="selectedVehicleForFilm">
           <option value="undefined" disabled selected>--Select a Vehicle--</option>
           @for(vehicle of vehicles(); track vehicle) {
             <option [ngValue]="vehicle">{{ vehicle.name }}</option>
           }
         </select>
-
-        @if(selectedVehicle() && !isFilmLoading()) {
+        @if(selectedVehicleForFilm() && isFilmLoading()) {
           <div>...Loading Films for this Vehicle</div>
-        } @else {
-          @if(films().length) {
-            <table>
-              <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Release Date</th>
-                    <th>Opening Crawl</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                @for (film of films(); track film) {
-                <tr>
-                    <td>
-                      {{ film.title }}
-                    </td>
-                    <td>
-                      {{ film.release_date }}
-                    </td>
-                    <td>
-                      {{ film.opening_crawl }}
-                    </td>
-                </tr>
-                }
-              </tbody>
-            </table>
-          } @else {
-            <div>No films found for the selected vehicle.</div>
-          }
+        } @else {
+            @if(films().length) {
+              <table>
+                <thead>
+                  <tr>
+                      <th>Title</th>
+                      <th>Release Date</th>
+                      <th>Opening Crawl</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  @for (film of films(); track film) {
+                  <tr>
+                      <td>
+                        {{ film.title }}
+                      </td>
+                      <td>
+                        {{ film.release_date }}
+                      </td>
+                      <td>
+                        {{ film.opening_crawl }}
+                      </td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            } @else {
+              <div>No films found for the selected vehicle.</div>
+            }
         }
       }
     </div>
@@ -70,9 +70,7 @@ export class FilmList {
   isVehicleLoading = this.vehicleService.isVehicleLoading;
   vehicles = this.vehicleService.vehicles;
 
-  selectedVehicle = this.filmService.selectedVehicleForFilm;
+  selectedVehicleForFilm = this.filmService.selectedVehicleForFilm;
   isFilmLoading = this.filmService.isFilmLoading;
   films = this.filmService.vehicleFilms;
-
-  // will add error message here
 }
