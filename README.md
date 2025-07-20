@@ -1,5 +1,7 @@
 # Star-Wars-Vehicles-Sales-Angular
 
+Use Angular 19 for this project to ensure full compatibility with the `rxResource` API, specifically the `request` and `loader` properties. In Angular 20+, these options have been removed/changed, so this codebase is designed for Angular 19.
+
 ## Concepts
 
 Use the following APIs for reactive state:
@@ -50,15 +52,42 @@ Then, when we navigate away from vehicle selection screen, its selected value, e
 
 [Signals in Action: Loading Indicator](https://www.youtube.com/watch?v=5K0Jr2ymQEs&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=2)
 
+## Documentation
 
-## Create a new Angular project
+[SWAPI - The Star Wars API](https://swapi.py4e.com/)
 
-Used a custom boilerplate/template:
+- [Vehicles](https://swapi.py4e.com/documentation#vehicles)
+- [Films](https://swapi.py4e.com/documentation#films)
+
+
+## Create an Angular 19 Project
+
+Use npx to Run a Specific CLI Version Temporarily:
+
+```bash
+npx -p @angular/cli@19 ng new Star-Wars-Vehicles-Sales-Angular
+```
+
+Usually we can create a new Angular project like this:
 ```bash
 ng new Star-Wars-Vehicles-Sales-Angular
 ```
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.5.
+But with the default `ng new` command — even if our global Angular CLI is v19, it downloads and uses the latest CLI version (20.0.5 here) to scaffold our new project.
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version `20.0.5`.
+
+## Downgrade after creating the project
+
+If you already created the project with 20.x.x:
+
+- Change all `@angular/*` dependencies in `package.json` to `^19.0.0`
+- Delete `node_modules` and `package-lock.json`
+
+Run:
+```bash
+npm install
+```
 
 ## Create a new component
 
