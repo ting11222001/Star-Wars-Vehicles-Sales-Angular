@@ -27,6 +27,9 @@ import { Home } from './home/home';
                   <a [routerLink]="['/films']">Film List</a>
                 </li>
                 <li>
+                  <a [routerLink]="['/films-details']">Film Details</a>
+                </li>
+                <li>
                   <a [routerLink]="['/cart']">Cart</a>
                 </li>
             </ul>  
