@@ -50,11 +50,33 @@ import { Vehicle } from "../vehicle.service";
  * Selected vehicle for films:  {name: 'Sand Crawler', model: 'Digger Crawler', …}
  * Loading indicator for films:  false
  * Film data:  (2) [{…}, {…}]
+ * 
+ * To pass parrameters when sening an HTTP request with the rxResource API:
+ * Use a request property and set it to a function, which references one or more signals. 
+ * When one or more signals changed, the associated loader function re-executes.
+ * Then, pass the data returned by the request function to the loader function using the loader function parameters.
+ * Lastly, use the loader function parameters as needed in the URL.
+ * 
+ * Here the example was only about passing one signal in the request.
+ * 
+ * But we can pass in multiple signals to the request like this:
+ *    startRange = signal<string | undefined>('1977-05-25');
+      endRange = signal<string | undefined>('2024-12-31');
+
+      private filmsResource = rxResource({
+        request: () => ({
+            start: this.startRange(),
+            end: this.endRange()
+        }),
+        loader: ({ request }) => this.http.get<Film>(`${this.filmUrl}?start=${request.start}&end=${request.end}`)
+      });
  */
 @Injectable({
   providedIn: 'root'
 })
 export class FilmService {
+  private filmUrl = 'https://swapi.py4e.com/api/films';
+
   private http = inject(HttpClient);
 
   selectedVehicleForFilm = signal<Vehicle | undefined>(undefined);
@@ -78,6 +100,16 @@ export class FilmService {
   loadingEff = effect(() => console.log('Loading indicator for films: ', this.isFilmLoading()));
   filmsEff = effect(() => console.log('Film data: ', this.vehicleFilms()));
   selectedVehiclesEff = effect(() => console.log('Selected vehicle for films: ', this.selectedVehicleForFilm()));
+  
+  // Try pass in one HTTP parameter
+  episodeNum = signal<Number | undefined>(undefined);
+  private filmsResource = rxResource({
+    request: () => this.episodeNum(),
+    loader: ({ request }) => 
+      this.http.get<Film>(`${this.filmUrl}/${request}`)
+  });
+  film = computed(() => this.filmsResource.value());
+  isLoading = this.filmsResource.isLoading;
 }
 
 export interface FilmResponse {
