@@ -68,6 +68,8 @@ of
 [SIA: Signals in a Service or a Component?](https://www.youtube.com/watch?v=xtxBMcEMcxU&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=7)
 - Skipped the error message handling part
 
+[SIA: Passing Parameters when issuing an HTTP Request](https://www.youtube.com/watch?v=xyKT0AMN25A&list=PLErOmyzRKOCobnHAC0RA5BwxGBageIhLv&index=5)
+
 ## Documentation
 
 [SWAPI - The Star Wars API](https://swapi.py4e.com/)
